@@ -1,6 +1,6 @@
-import { ServiceImplEntity } from "../domain/serviceImpl/entitites";
-import { TeamError } from "../domain/serviceImpl/errors";
-import { IServiceImpl } from "../domain/serviceImpl/interfaces";
+import { ServiceImplEntity } from "../domain/qrCodeGenerator/entitites";
+import { TeamError } from "../domain/qrCodeGenerator/errors";
+import { IServiceImpl } from "../domain/qrCodeGenerator/interfaces";
 import { ServiceImplDTO } from "./serviceImpl_dto";
 
 export class ServiceImplHandler extends ServiceImplEntity{

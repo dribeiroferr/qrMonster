@@ -1,4 +1,4 @@
-import { ServiceImplEntity } from "../../serviceName/domain/serviceImpl/entitites"
+import { ServiceImplEntity } from "../../serviceName/domain/qrCodeGenerator/entitites"
 
 describe('Testing new service implementation', () => { 
     it('should return an object with two attributes', () => {

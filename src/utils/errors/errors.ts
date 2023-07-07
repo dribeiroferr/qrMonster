@@ -5,23 +5,23 @@
  * 
  */
 
-export class ErrorBase <T extends string> extends Error {
+export class ErrorBase<T extends string, U extends string, V extends string> extends Error {
     name: T;
-    message: string; 
-    cause: any;
+    message: U; 
+    code: V;
 
     constructor({
-        name, 
-        message, 
-        cause,
-    }:{
-        name: T;
-        message: string;
-        cause?: any;
-    }){
-        super();
-        this.name = name;
-        this.message = message;
-        this.cause = cause;
-    }
+         name,
+         message,
+         code
+        }: {
+            name: T;
+            message: U, 
+            code: V
+        }){
+           super();
+           this.name = name; 
+           this.message = message;
+           this.code = code; 
+        }
 }

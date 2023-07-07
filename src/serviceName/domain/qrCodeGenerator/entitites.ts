@@ -1,5 +1,5 @@
-import { TeamError } from "./errors";
-import { IServiceImpl } from "./interfaces";
+import { QRCodeGeneratorErrors } from "./errors";
+import { IQrCodeGenerator } from "./interfaces";
 
 /**
  * 
