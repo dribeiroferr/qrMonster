@@ -3,41 +3,49 @@ import { IQrCodeGenerator } from "./interfaces";
 
 /**
  * 
- * @namespace ServiceImplEntity
- * @description Service implementation entity class
+ * @namespace QRCodeGeneratorEntity
+ * @description QR code generator Entity class
  * @class
+ * @param input_text the user input text eg: "a duck dancing in the raing"
+ * @param negative_input the user negative input text eg : "blurry, foggy, malformed picture etc..."
+ * @param input_text the user qrCode image already generated and saved inside a s3 bucket
  * 
  */
 
-export class ServiceImplEntity{
+export class QRCodeGeneratorEntity{
 
-    name: string; 
-    attr: object;
+    input_text: string; 
+    negative_input: string;
+    image_s3_object: string;
 
-    constructor(name: string, attr: object){
-        this.name = name;
-        this.attr = attr;
+
+    constructor({
+        input_text,
+        negative_input,
+        image_s3_object
+    }: IQrCodeGenerator
+        ){
+        this.input_text = input_text;
+        this.negative_input = negative_input;
+        this.image_s3_object = image_s3_object;
     }
     
-    public isValid(): boolean {
+    public isValid(): boolean { 
         try {
-            if(!this.name){
-                throw new TeamError({
-                    name: 'CREATE_PROJECT_ERROR',
-                    message: '500 - internal error',
-                    cause: 'project name field is required'
-                });
-            }
-            return true
-        } catch (error) {
-            if(error instanceof TeamError){
-                if(error.name === 'CREATE_PROJECT_ERROR'){
-                    console.error(error.message);
-                    
-                }
-            }
-        }
 
+            this.input_text ??(() => { throw new QRCodeGeneratorErrors("MISSING_INPUT_TEXT_ATTRIBUTE", "QRCODE_MISSING_ATTRIBUTES", "BAD_REQUEST")});
+            this.negative_input ?? (() => { throw new QRCodeGeneratorErrors("MISSING_NEGATIVE_INPUT_TEXT_ATTRIBUTE", "QRCODE_MISSING_ATTRIBUTES", "BAD_REQUEST")});
+            this.image_s3_object ?? (() => { throw new QRCodeGeneratorErrors("MISSING_QRCODE_IMAGE_ATTRIBUTE", "QRCODE_MISSING_ATTRIBUTES", "BAD_REQUEST")});
+
+            !this.input_text
+            && !this.negative_input
+            && !this.image_s3_object ? true : (() => { throw new QRCodeGeneratorErrors("MISSING_ALL_ATTRIBUTES", "QRCODE_MISSING_ATTRIBUTES", "BAD_REQUEST");
+             });
+
+            return true;
+        } catch (error) {
+            error instanceof QRCodeGeneratorErrors ?? console.error(error);
+        }
     }
 
     

@@ -7,6 +7,7 @@
  */
 
 const qrCodeGeneratorErrorsNames = { 
+    MISSING_ALL_ATTRIBUTES : 'MISSING ALL ATTRIBUTES',
     MISSING_INPUT_TEXT_ATTRIBUTE : 'MISSING INPUT TEXT ATTRIBUTE', 
     MISSING_NEGATIVE_INPUT_TEXT_ATTRIBUTE: 'MISSING NEGATIVE TEXT INPUT ATTRIBUTE',
     MISSING_QRCODE_IMAGE_ATTRIBUTE : 'MISSING QRCODE IMAGE ATTRIBUTE'
@@ -23,5 +24,5 @@ const qrCodeErrorsMessage = {
 } as const;
 
 export type QrCodeErrorNamesType = keyof typeof qrCodeGeneratorErrorsNames;
-export type QrCodeErrorsCodesTypes = keyof typeof qrCodeErrorsCodes;
 export type QrCodeErrorMessageType = keyof typeof qrCodeErrorsMessage;
+export type QrCodeErrorsCodesTypes = keyof typeof qrCodeErrorsCodes;
