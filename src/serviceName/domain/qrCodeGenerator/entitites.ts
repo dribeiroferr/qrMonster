@@ -8,7 +8,7 @@ import { IQrCodeGenerator } from "./interfaces";
  * @class
  * @param input_text the user input text eg: "a duck dancing in the raing"
  * @param negative_input the user negative input text eg : "blurry, foggy, malformed picture etc..."
- * @param input_text the user qrCode image already generated and saved inside a s3 bucket
+ * @param image_s3_object the user qrCode image already generated and saved inside a s3 bucket
  * 
  */
 
