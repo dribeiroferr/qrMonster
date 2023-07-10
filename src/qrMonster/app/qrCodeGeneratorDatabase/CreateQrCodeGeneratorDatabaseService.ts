@@ -3,7 +3,7 @@ import { QrCodeGeneratorDatabaseErrors } from "../../domain/qrCodeGeneratorDatab
 import { InMemoryQrCodeGeneratorDatabaseRepository } from "../../../infra/database/repositories/inMemory/InMemoryQrGenerator";
 import { QrCodeGeneratorDatabaseServiceDTO } from "./QrCodeGeneratorDatabaseServiceDTO";
 
-export class QrCodeGeneratorDatabaseService{
+export class CreateQrCodeGeneratorDatabaseService{
     constructor(private readonly inMemoryQrCodeGeneratorDatabaseRepository: InMemoryQrCodeGeneratorDatabaseRepository){};
 
     /**

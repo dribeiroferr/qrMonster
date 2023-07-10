@@ -1,16 +1,16 @@
 import { InMemoryQrCodeGeneratorDatabaseRepository } from "../../../../../infra/database/repositories/inMemory/InMemoryQrGenerator";
-import { QrCodeGeneratorDatabaseService } from "../../../../../qrMonster/app/qrCodeGeneratorDatabase/QrCodeGeneratorDatabase";
+import { CreateQrCodeGeneratorDatabaseService } from "../../../../../qrMonster/app/qrCodeGeneratorDatabase/CreateQrCodeGeneratorDatabaseService";
 
 describe("QrCodeGeneratorDatabaseServiceTest", () => {
     it("test_create_record_success", async () => {
       const inMemoryQrCodeGeneratorDatabaseRepository = new InMemoryQrCodeGeneratorDatabaseRepository();
-      const qrCodeGeneratorDatabaseService = new QrCodeGeneratorDatabaseService(inMemoryQrCodeGeneratorDatabaseRepository);
+      const createQrCodeGeneratorDatabaseService = new CreateQrCodeGeneratorDatabaseService(inMemoryQrCodeGeneratorDatabaseRepository);
       const qrCodeData = {
         inputText: 'input text',
         negativeInput: 'negative input',
         imageS3Object: 'url::/s3.amazon...'
       };
-      const execute = await qrCodeGeneratorDatabaseService.createRecord(qrCodeData);
+      const execute = await createQrCodeGeneratorDatabaseService.createRecord(qrCodeData);
   
       // Compare the properties of the received object with the qrCodeData object
       expect(execute.input_text).toEqual(qrCodeData.inputText);
