@@ -1,5 +1,5 @@
-import { QRCodeGeneratorErrors } from "./errors";
-import { IQrCodeGenerator } from "./interfaces";
+import { QRCodeGeneratorErrors } from "../errors/errors";
+import { IQrCodeGeneratorDatabaseEntity } from "../dtos/interfaces";
 
 /**
  * 
@@ -12,7 +12,7 @@ import { IQrCodeGenerator } from "./interfaces";
  * 
  */
 
-export class QRCodeGeneratorEntity{
+export class QRCodeGeneratorDatabaseEntity{
 
     input_text: string; 
     negative_input: string;
@@ -23,7 +23,7 @@ export class QRCodeGeneratorEntity{
         input_text,
         negative_input,
         image_s3_object
-    }: IQrCodeGenerator
+    }: IQrCodeGeneratorDatabaseEntity
         ){
         this.input_text = input_text;
         this.negative_input = negative_input;

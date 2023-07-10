@@ -1,4 +1,4 @@
-import { ServiceImplEntity } from "../domain/qrCodeGenerator/entitites";
+import { ServiceImplEntity } from "../domain/qrCodeGeneratorDatabase/entities/entitites";
 
 export class serviceImplDTO extends ServiceImplEntity { 
     constructor(name: string, attr: object){

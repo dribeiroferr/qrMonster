@@ -1,5 +1,5 @@
 import { InMemoryQrCodeGeneratorRepository } from "../../../../../../infra/database/repositories/inMemory/InMemoryQrGenerator";
-import { QRCodeGeneratorEntity } from "../../../../../../qrMonster/domain/qrCodeGenerator/entitites";
+import { QRCodeGeneratorEntity } from "../../../../../../qrMonster/domain/qrCodeGeneratorDatabase/entities/entitites";
 
 describe("InMemoryQrCodeGeneratorRepository", () => {
     let repository: InMemoryQrCodeGeneratorRepository;
@@ -58,7 +58,7 @@ describe("InMemoryQrCodeGeneratorRepository", () => {
     
         // Assert that the result contains the expected QRCodeGeneratorEntity
         expect(result).toContain(qrCodeGenerator1);
-        // expect(result).not.toContain(qrCodeGenerator2);
+        expect(result).not.toContain(qrCodeGenerator2);
       });
     
     //   it("should throw an error when S3 bucket does not exist", async () => {

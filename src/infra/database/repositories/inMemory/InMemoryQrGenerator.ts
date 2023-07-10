@@ -1,6 +1,6 @@
-import { QRCodeGeneratorEntity } from "../../../../qrMonster/domain/qrCodeGenerator/entitites";
-import { QrCodeGeneratorRepository } from "../../../../qrMonster/domain/repositories";
-import { QRCodeGeneratorErrors } from "../../../../qrMonster/domain/qrCodeGenerator/errors";
+import { QRCodeGeneratorDatabaseEntity } from "../../../../qrMonster/domain/qrCodeGeneratorDatabase/entities/entitites";
+import { QrCodeGeneratorRepository } from "../../../../qrMonster/domain/qrCodeGeneratorDatabase/repositories/repositories";
+import { QRCodeGeneratorErrors } from "../../../../qrMonster/domain/qrCodeGeneratorDatabase/errors/errors";
 
 /**
  * 
@@ -11,9 +11,9 @@ import { QRCodeGeneratorErrors } from "../../../../qrMonster/domain/qrCodeGenera
  */
 
 export class InMemoryQrCodeGeneratorRepository implements QrCodeGeneratorRepository {
-    private qrCodeGenerator: QRCodeGeneratorEntity[] = [];
+    private qrCodeGenerator: QRCodeGeneratorDatabaseEntity[] = [];
 
-    public async save(qrCodeGenerator: QRCodeGeneratorEntity): Promise<QRCodeGeneratorEntity[] | void> {
+    public async save(qrCodeGenerator: QRCodeGeneratorDatabaseEntity): Promise<QRCodeGeneratorDatabaseEntity[] | void> {
         try {
             this.qrCodeGenerator.push(qrCodeGenerator);
             return this.qrCodeGenerator
@@ -29,9 +29,9 @@ export class InMemoryQrCodeGeneratorRepository implements QrCodeGeneratorReposit
      * @method findByS3Bucket
      * @param image_s3_object this is the s3 bucket url that cotanins the qrCode original image
      */
-    public async findByS3Bucket(image_s3_object: string): Promise<QRCodeGeneratorEntity[]> {
+    public async findByS3Bucket(image_s3_object: string): Promise<QRCodeGeneratorDatabaseEntity[]> {
         try {
-            const s3Bucket: QRCodeGeneratorEntity[] = this.qrCodeGenerator.filter((qrCodeGenerator) => qrCodeGenerator.image_s3_object === image_s3_object);
+            const s3Bucket: QRCodeGeneratorDatabaseEntity[] = this.qrCodeGenerator.filter((qrCodeGenerator) => qrCodeGenerator.image_s3_object === image_s3_object);
             if(s3Bucket || s3Bucket.length >= 0){
                 return s3Bucket;
             }
