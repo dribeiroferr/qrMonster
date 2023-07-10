@@ -1,4 +1,4 @@
-import { QRCodeGeneratorEntity } from "../../../../../serviceName/domain/qrCodeGenerator/entitites";
+import { QRCodeGeneratorEntity } from "../../../../../qrMonster/domain/qrCodeGenerator/entitites";
 
 // Creating instance with valid parameters:
 it('test_constructor_initializes_attributes', () => {
