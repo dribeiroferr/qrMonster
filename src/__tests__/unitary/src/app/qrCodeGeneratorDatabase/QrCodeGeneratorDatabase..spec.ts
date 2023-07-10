@@ -11,6 +11,7 @@ describe("QrCodeGeneratorDatabaseServiceTest", () => {
         imageS3Object: 'url::/s3.amazon...'
       };
       const execute = await createQrCodeGeneratorDatabaseService.createRecord(qrCodeData);
+      console.log('')
   
       // Compare the properties of the received object with the qrCodeData object
       expect(execute.input_text).toEqual(qrCodeData.inputText);
