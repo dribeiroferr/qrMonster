@@ -21,12 +21,3 @@ it('test_is_valid_returns_true', () => {
     });
     expect(qrCodeGeneratorDatabaseEntity.isValid()).toBe(true);
 });
-
-// Testing if throws an error when the inpuit text is missing, but with an interface is alarming before the tests
-// it('test_is_valid_throws_error_when_input_text_missing', () => {
-//     const qrCodeGeneratorDatabaseEntity = new QrCodeGeneratorDatabaseEntity({
-//         negative_input: 'negative_input',
-//         image_s3_object: 'image_s3_object'
-//     });
-//     expect(() => qrCodeGeneratorDatabaseEntity.isValid()).toThrow(QRCodeGeneratorErrors);
-// });

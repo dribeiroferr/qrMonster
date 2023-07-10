@@ -16,7 +16,9 @@ export class InMemoryQrCodeGeneratorDatabaseRepository implements QrCodeGenerato
     public async save(qrCodeGenerator: QrCodeGeneratorDatabaseEntity): Promise<QrCodeGeneratorDatabaseEntity[] | void> {
         try {
             this.qrCodeGenerator.push(qrCodeGenerator);
-            return this.qrCodeGenerator
+            console.log(this.qrCodeGenerator);
+            
+            return this.qrCodeGenerator;
         } catch (error) {
             if(error instanceof QrCodeGeneratorDatabaseErrors){
                 console.error(new QrCodeGeneratorDatabaseErrors('ALREADY_EXISTS', 'CONDITION_ALREADY_SATISFIED', 'CONFLICT'))

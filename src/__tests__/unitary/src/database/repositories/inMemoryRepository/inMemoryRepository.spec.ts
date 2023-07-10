@@ -22,19 +22,7 @@ describe("InMemoryQrCodeGeneratorDatabaseRepository", () => {
       // Assert that the entity has been saved
       expect(repository['qrCodeGenerator']).toContain(qrCodeGenerator);
     });
-  
-    // it("should throw an error when saving an invalid QrCodeGeneratorDatabaseEntity", async () => {
-    //   // Create an invalid QrCodeGeneratorDatabaseEntity instance
-    //   const qrCodeGenerator = new QrCodeGeneratorDatabaseEntity({
-    //     input_text: null,
-    //     negative_input: "Test Negative Input",
-    //     image_s3_object: "test-image-url",
-    //   });
-  
-    //   // Call the save method and expect it to throw an error
-    //   await expect(repository.save(qrCodeGenerator)).rejects.toThrow();
-    // });
-
+    
     it("should find QrCodeGeneratorDatabaseEntity by S3 bucket", async () => {
         // Create some QrCodeGeneratorDatabaseEntity instances
         const qrCodeGenerator1 = new QrCodeGeneratorDatabaseEntity({
@@ -60,10 +48,4 @@ describe("InMemoryQrCodeGeneratorDatabaseRepository", () => {
         expect(result).toContain(qrCodeGenerator1);
         expect(result).not.toContain(qrCodeGenerator2);
       });
-    
-    //   it("should throw an error when S3 bucket does not exist", async () => {
-    //     // Call the findByS3Bucket method with a non-existent S3 bucket URL
-    //     await expect(repository.findByS3Bucket("non-existent-bucket-url")).rejects.toThrow();
-    //   });
-
   });
