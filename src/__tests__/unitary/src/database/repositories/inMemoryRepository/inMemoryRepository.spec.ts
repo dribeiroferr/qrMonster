@@ -1,5 +1,5 @@
 import { InMemoryQrCodeGeneratorRepository } from "../../../../../../infra/database/repositories/inMemory/InMemoryQrGenerator";
-import { QRCodeGeneratorEntity } from "../../../../../../qrMonster/domain/qrCodeGeneratorDatabase/entities/entitites";
+import { QRCodeGeneratorDatabaseEntity } from "../../../../../../qrMonster/domain/qrCodeGeneratorDatabase/entities/entitites";
 
 describe("InMemoryQrCodeGeneratorRepository", () => {
     let repository: InMemoryQrCodeGeneratorRepository;
@@ -8,9 +8,9 @@ describe("InMemoryQrCodeGeneratorRepository", () => {
       repository = new InMemoryQrCodeGeneratorRepository();
     });
   
-    it("should save a valid QRCodeGeneratorEntity", async () => {
-      // Create a valid QRCodeGeneratorEntity instance
-      const qrCodeGenerator = new QRCodeGeneratorEntity({
+    it("should save a valid QRCodeGeneratorDatabaseEntity", async () => {
+      // Create a valid QRCodeGeneratorDatabaseEntity instance
+      const qrCodeGenerator = new QRCodeGeneratorDatabaseEntity({
         input_text: "Test Input",
         negative_input: "Test Negative Input",
         image_s3_object: "test-image-url",
@@ -23,9 +23,9 @@ describe("InMemoryQrCodeGeneratorRepository", () => {
       expect(repository['qrCodeGenerator']).toContain(qrCodeGenerator);
     });
   
-    // it("should throw an error when saving an invalid QRCodeGeneratorEntity", async () => {
-    //   // Create an invalid QRCodeGeneratorEntity instance
-    //   const qrCodeGenerator = new QRCodeGeneratorEntity({
+    // it("should throw an error when saving an invalid QRCodeGeneratorDatabaseEntity", async () => {
+    //   // Create an invalid QRCodeGeneratorDatabaseEntity instance
+    //   const qrCodeGenerator = new QRCodeGeneratorDatabaseEntity({
     //     input_text: null,
     //     negative_input: "Test Negative Input",
     //     image_s3_object: "test-image-url",
@@ -35,15 +35,15 @@ describe("InMemoryQrCodeGeneratorRepository", () => {
     //   await expect(repository.save(qrCodeGenerator)).rejects.toThrow();
     // });
 
-    it("should find QRCodeGeneratorEntity by S3 bucket", async () => {
-        // Create some QRCodeGeneratorEntity instances
-        const qrCodeGenerator1 = new QRCodeGeneratorEntity({
+    it("should find QRCodeGeneratorDatabaseEntity by S3 bucket", async () => {
+        // Create some QRCodeGeneratorDatabaseEntity instances
+        const qrCodeGenerator1 = new QRCodeGeneratorDatabaseEntity({
           input_text: "Test Input 1",
           negative_input: "Test Negative Input 1",
           image_s3_object: "s3-bucket-url-1",
         });
     
-        const qrCodeGenerator2 = new QRCodeGeneratorEntity({
+        const qrCodeGenerator2 = new QRCodeGeneratorDatabaseEntity({
           input_text: "Test Input 2",
           negative_input: "Test Negative Input 2",
           image_s3_object: "s3-bucket-url-2",
@@ -56,7 +56,7 @@ describe("InMemoryQrCodeGeneratorRepository", () => {
         // Call the findByS3Bucket method with a known S3 bucket URL
         const result = await repository.findByS3Bucket("s3-bucket-url-1");
     
-        // Assert that the result contains the expected QRCodeGeneratorEntity
+        // Assert that the result contains the expected QRCodeGeneratorDatabaseEntity
         expect(result).toContain(qrCodeGenerator1);
         expect(result).not.toContain(qrCodeGenerator2);
       });
