@@ -1,8 +1,8 @@
-import { QRCodeGeneratorDatabaseEntity } from "../../../../../qrMonster/domain/qrCodeGeneratorDatabase/entities/entitites";
+import { QrCodeGeneratorDatabaseEntity } from "../../../../../qrMonster/domain/qrCodeGeneratorDatabase/entities/entitites";
 
 // Creating instance with valid parameters:
 it('test_constructor_initializes_attributes', () => {
-    const qrCodeGeneratorDatabaseEntity = new QRCodeGeneratorDatabaseEntity({
+    const qrCodeGeneratorDatabaseEntity = new QrCodeGeneratorDatabaseEntity({
         input_text: 'input_text',
         negative_input: 'negative_input',
         image_s3_object: 'image_s3_object'
@@ -14,7 +14,7 @@ it('test_constructor_initializes_attributes', () => {
 
 // Testing isValid() returns true when all required attributes are present
 it('test_is_valid_returns_true', () => {
-    const qrCodeGeneratorDatabaseEntity = new QRCodeGeneratorDatabaseEntity({
+    const qrCodeGeneratorDatabaseEntity = new QrCodeGeneratorDatabaseEntity({
         input_text: 'input_text',
         negative_input: 'negative_input',
         image_s3_object: 'image_s3_object'
@@ -24,7 +24,7 @@ it('test_is_valid_returns_true', () => {
 
 // Testing if throws an error when the inpuit text is missing, but with an interface is alarming before the tests
 // it('test_is_valid_throws_error_when_input_text_missing', () => {
-//     const qrCodeGeneratorDatabaseEntity = new QRCodeGeneratorDatabaseEntity({
+//     const qrCodeGeneratorDatabaseEntity = new QrCodeGeneratorDatabaseEntity({
 //         negative_input: 'negative_input',
 //         image_s3_object: 'image_s3_object'
 //     });

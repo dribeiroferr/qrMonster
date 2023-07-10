@@ -1,9 +1,9 @@
-import { QRCodeGeneratorErrors } from "../errors/errors";
+import { QrCodeGeneratorDatabaseErrors } from "../errors/errors";
 import { IQrCodeGeneratorDatabaseEntity } from "../dtos/interfaces";
 
 /**
  * 
- * @namespace QRCodeGeneratorEntity
+ * @namespace QrCodeGeneratorEntity
  * @description QR code generator Entity class
  * @class
  * @param input_text the user input text eg: "a duck dancing in the raing"
@@ -12,7 +12,7 @@ import { IQrCodeGeneratorDatabaseEntity } from "../dtos/interfaces";
  * 
  */
 
-export class QRCodeGeneratorDatabaseEntity{
+export class QrCodeGeneratorDatabaseEntity{
 
     input_text: string; 
     negative_input: string;
@@ -33,18 +33,18 @@ export class QRCodeGeneratorDatabaseEntity{
     public isValid(): boolean { 
         try {
 
-            this.input_text ??(() => { throw new QRCodeGeneratorErrors("MISSING_INPUT_TEXT_ATTRIBUTE", "QRCODE_MISSING_ATTRIBUTES", "BAD_REQUEST")});
-            this.negative_input ?? (() => { throw new QRCodeGeneratorErrors("MISSING_NEGATIVE_INPUT_TEXT_ATTRIBUTE", "QRCODE_MISSING_ATTRIBUTES", "BAD_REQUEST")});
-            this.image_s3_object ?? (() => { throw new QRCodeGeneratorErrors("MISSING_QRCODE_IMAGE_ATTRIBUTE", "QRCODE_MISSING_ATTRIBUTES", "BAD_REQUEST")});
+            this.input_text ??(() => { throw new QrCodeGeneratorDatabaseErrors("MISSING_INPUT_TEXT_ATTRIBUTE", "QRCODE_MISSING_ATTRIBUTES", "BAD_REQUEST")});
+            this.negative_input ?? (() => { throw new QrCodeGeneratorDatabaseErrors("MISSING_NEGATIVE_INPUT_TEXT_ATTRIBUTE", "QRCODE_MISSING_ATTRIBUTES", "BAD_REQUEST")});
+            this.image_s3_object ?? (() => { throw new QrCodeGeneratorDatabaseErrors("MISSING_QRCODE_IMAGE_ATTRIBUTE", "QRCODE_MISSING_ATTRIBUTES", "BAD_REQUEST")});
 
             !this.input_text
             && !this.negative_input
-            && !this.image_s3_object ? true : (() => { throw new QRCodeGeneratorErrors("MISSING_ALL_ATTRIBUTES", "QRCODE_MISSING_ATTRIBUTES", "BAD_REQUEST");
+            && !this.image_s3_object ? true : (() => { throw new QrCodeGeneratorDatabaseErrors("MISSING_ALL_ATTRIBUTES", "QRCODE_MISSING_ATTRIBUTES", "BAD_REQUEST");
              });
 
             return true;
         } catch (error) {
-            error instanceof QRCodeGeneratorErrors ?? console.error(error);
+            error instanceof QrCodeGeneratorDatabaseErrors ?? console.error(error);
         }
     }
 
