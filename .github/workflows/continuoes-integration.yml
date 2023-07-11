@@ -18,11 +18,17 @@ jobs:
         with: 
           node-version: 16
 
+      - name: Install yarn latest version
+        run: npm install -g yarn
+
+      - name: Install typescript globally
+        run: yarn add typescript -G
+
       - name: Install Dependencies
-        run: npm i
+        run: yarn
 
       - name: Build Typescript
-        run: npm run build
+        run: yarn build
 
       - name: Run Tests
-        run: npm run test
+        run: yarn test
