@@ -1,8 +1,8 @@
 {
-  "name": "ts-ddd-tdd-template",
+  "name": "qrmonster",
   "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/dribeiroferr/ts-ddd-tdd-template",
+  "main": "dist/index.js",
+  "repository": "https://github.com/dribeiroferr/qrMonster",
   "author": "dribeiroferr <dribeiroferr.ito@gmail.com>",
   "license": "MIT",
   "devDependencies": {
