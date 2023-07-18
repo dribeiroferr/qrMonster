@@ -6,7 +6,7 @@ import { QrCodeGeneratorDatabaseErrors } from "../../../../qrMonster/domain/qrCo
  * 
  * @class InMemoryCodeGeneratorRepository
  * @description This class is responsible for creates an repository that saves the entity in memory
- * @methods
+ * @methods save(), findByS3Bucket
  * 
  */
 
@@ -16,8 +16,6 @@ export class InMemoryQrCodeGeneratorDatabaseRepository implements QrCodeGenerato
     public async save(qrCodeGenerator: QrCodeGeneratorDatabaseEntity): Promise<QrCodeGeneratorDatabaseEntity[] | void> {
         try {
             this.qrCodeGenerator.push(qrCodeGenerator);
-            console.log(this.qrCodeGenerator);
-            
             return this.qrCodeGenerator;
         } catch (error) {
             if(error instanceof QrCodeGeneratorDatabaseErrors){

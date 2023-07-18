@@ -8,6 +8,6 @@ import { QrCodeGeneratorDatabaseEntity } from "../entities/entitites";
  */
 
 export interface QrCodeGeneratorDatabaseRepository { 
-    findByS3Bucket(image_s3_object: string): Promise<QrCodeGeneratorDatabaseEntity[] | undefined>;
+    findByS3Bucket(image_s3_object: string): Promise<QrCodeGeneratorDatabaseEntity[] | QrCodeGeneratorDatabaseEntity>;
     save(qrCodeGenerator: QrCodeGeneratorDatabaseEntity): Promise<QrCodeGeneratorDatabaseEntity[] | void>
 }
