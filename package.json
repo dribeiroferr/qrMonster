@@ -28,9 +28,13 @@
     "typescript": "*"
   },
   "scripts": {
-    "build": "tsc",
-    "test": "jest",
-    "lint:OS:fix": "sed -i -e 's/\r$//' ./jest.config.ts"
+    "build": "rm -rf ./dist/ ** tsc -p .",
+    "build:deploy": "yarn build && yarn test",
+    "dev": "npx nodemon ./src/infra/server/index.ts",
+    "lint:OS:fix": "sed -i -e 's/\r$//' ./jest.config.ts",
+    "start:dev": "ts-node-dev --transpile-only --ignore-watch node_modules ./src/infra/server/index.ts",
+    "start": "node ./dist/infra/server/index.js",
+    "test": "jest"
   },
   "dependencies": {
     "class-transformer": "^0.5.1",

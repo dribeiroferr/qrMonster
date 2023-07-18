@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+  qrmonster:
+    build:
+      context: ./etc/nodejs
+    container_name: qrMonster
+    environment:
+      - HOSTNAME=$APPLICATION_HOSTNAME
+      - APPLICATION_PORT=$APPLICATION_PORT
+    ports:
+      - ${APPLICATION_PORT}:${APPLICATION_PORT}
+    restart: unless-stopped
+
+  mongodb:
+    build:
+      context: ./etc/mongo
+    container_name: mongodb-container
+    environment:
+      - MONGODB_USERNAME=${MONGODB_USERNAME}
+      - MONGODB_PASSWORD=${MONGODB_PASSWORD}
+      - MONGODB_DATABASE=${MONGODB_DATABASE}
+      - MONGODB_PORT=${MONGODB_PORT}
+      - MONGODB_HOSTNAME=${MONGODB_HOSTNAME}
+    ports:
+      - ${MONGODB_PORT}:${MONGODB_PORT}
+    volumes:
+      - mongodb-data:/data/db
+    restart: unless-stopped
+
+volumes:
+  mongodb-data:
