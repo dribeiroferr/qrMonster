@@ -7,5 +7,6 @@
     "ext": "ts",
     "exec": "ts-node --project tsconfig.json src/qrMonster/infra/server/index.ts",
     "delay": "1000",
-    "restartable": "rs"
+    "restartable": "rs",
+    "legacy-watch": true
   }
