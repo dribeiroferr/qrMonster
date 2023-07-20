@@ -86,3 +86,7 @@ const metricsErrorsMessages = {
 export type MetricsErrorsNameType = keyof typeof metricsErrorsName;
 export type MetricsErrorsCodesType = keyof typeof metricsErrorsCodes;
 export type MetricsErrorsMessagesType = keyof typeof metricsErrorsMessages;
+
+export function getErrorMessage(errorName: MetricsErrorsNameType): string {
+  return metricsErrorsCodes[errorName] || 'An unknown error occured.'
+}

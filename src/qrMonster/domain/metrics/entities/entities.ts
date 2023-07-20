@@ -1,5 +1,6 @@
 import { MetricsErrors } from "../errors/errors"
 import { IMetricsDTO } from "../dtos/metricsDTO"
+import { MetricsErrorsNameType, getErrorMessage } from "../utils/enums";
 
 /**
  * 
@@ -29,7 +30,11 @@ export class MetricsEntity {
             !this.metricName && !this.value ? (() => { throw new MetricsErrors('AllAttributesIsMissing', 'MetricsError', 'BadRequest')}) : true;
             return true
         } catch (error) {
-            error instanceof MetricsErrors ?? console.error(error)
+            if(error instanceof MetricsErrors){
+                const errorMessage = getErrorMessage(error.name as MetricsErrorsNameType);
+                console.log(errorMessage);
+            }
+            console.error(error);
             return false;
         }
     }
