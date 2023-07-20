@@ -1,0 +1,11 @@
+{
+    "watch": ["src"],
+    "ignore": [
+        "node_modules",
+        "src/**/*.spec.ts"
+    ],
+    "ext": "ts",
+    "exec": "ts-node --project tsconfig.json src/qrMonster/infra/server/index.ts",
+    "delay": "1000",
+    "restartable": "rs"
+  }
