@@ -45,6 +45,7 @@ export class QrCodeGeneratorDatabaseEntity{
             return true;
         } catch (error) {
             error instanceof QrCodeGeneratorDatabaseErrors ?? console.error(error);
+            return false;
         }
     }
 
