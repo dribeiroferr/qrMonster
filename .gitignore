@@ -109,6 +109,9 @@ dist
 # Docusaurus cache and generated files
 .docusaurus
 
+# Dev environmental variables
+dev.env.sh
+
 # Serverless directories
 .serverless/
 

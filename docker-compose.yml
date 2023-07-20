@@ -4,6 +4,7 @@ services:
   qrmonster:
     build:
       context: ./etc/nodejs
+      dockerfile: Dockerfile
     container_name: qrMonster
     environment:
       - HOSTNAME=$APPLICATION_HOSTNAME
@@ -11,22 +12,42 @@ services:
     ports:
       - ${APPLICATION_PORT}:${APPLICATION_PORT}
     restart: unless-stopped
+    depends_on:
+      - mongodb
+      - grafana
 
   mongodb:
     build:
       context: ./etc/mongo
     container_name: mongodb-container
     environment:
-      - MONGODB_USERNAME=${MONGODB_USERNAME}
-      - MONGODB_PASSWORD=${MONGODB_PASSWORD}
-      - MONGODB_DATABASE=${MONGODB_DATABASE}
+      - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PASSWORD}
+      - MONGO_DB=${MONGODB_DATABASE}
       - MONGODB_PORT=${MONGODB_PORT}
-      - MONGODB_HOSTNAME=${MONGODB_HOSTNAME}
     ports:
       - ${MONGODB_PORT}:${MONGODB_PORT}
     volumes:
       - mongodb-data:/data/db
     restart: unless-stopped
 
+  grafana: 
+    build:
+      context: ./etc/grafana
+      dockerfile: Dockerfile
+    container_name: grafana-container
+    environment:
+      - GRAFANA_HOSTNAME=${GRAFANA_HOSTNAME}
+      - GRAFANA_PORT=${GRAFANA_PORT}
+      - GRAFANA_USERNAME=${GRAFANA_USERNAME}
+      - GRAFANA_PASSWORD=${GRAFANA_PASSWORD}
+    ports:
+      - ${GRAFANA_PORT}:${GRAFANA_PORT}
+    volumes:
+      - grafana-data:/var/lib/grafana
+    restart: unless-stoped
+
+
 volumes:
   mongodb-data:
+  grafana-data:

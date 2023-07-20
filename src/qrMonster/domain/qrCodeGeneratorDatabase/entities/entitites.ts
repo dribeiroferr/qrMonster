@@ -14,9 +14,9 @@ import { IQrCodeGeneratorDatabaseEntity } from "../dtos/interfaces";
 
 export class QrCodeGeneratorDatabaseEntity{
 
-    input_text: string; 
-    negative_input: string;
-    image_s3_object: string;
+    public input_text: string; 
+    public negative_input: string;
+    public image_s3_object: string;
 
 
     constructor({
