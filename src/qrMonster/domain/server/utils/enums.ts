@@ -29,7 +29,10 @@ const serverErrorsNames = {
   // Middleware Errors:
   MiddlewareSetupHasFailed: 'Middleware setup has failed to initialized',
   MiddlewareLogRequestsHasFailed: 'Middleware log request has failed',
-  MiddlewareHandlingRequestsFailed: 'Middleware is not handling requests'
+  MiddlewareHandlingRequestsFailed: 'Middleware is not handling requests',
+
+  // Router Errors:
+  RouterV1SetupHasFailed: 'Router V1 setup has failed to initialized',
 
 
 } as const;

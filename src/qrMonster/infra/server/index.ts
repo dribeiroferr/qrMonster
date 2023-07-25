@@ -13,11 +13,11 @@ const server1: ServerDTO = {
   port: EnvironmentalGlobalEnvironments.port1,
   maxConnections: 100,
 };
-const server2: ServerDTO = {
-  id: "server-2",
-  port: 4000,
-  maxConnections: 50,
-};
+// const server2: ServerDTO = {
+//   id: "server-2",
+//   port: 4000,
+//   maxConnections: 50,
+// };
 
 expressAdapter.startServer();
 

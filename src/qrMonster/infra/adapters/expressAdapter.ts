@@ -6,19 +6,22 @@ import { ServerErrors } from "../../domain/server/errors/errors";
 import { EnvironmentalGlobalEnvironments } from "../../../utils/config/config";
 import { ServerDTO } from "../../domain/server/dtos/interface";
 import os from "os";
-import { Worker } from "worker_threads";
 import cluster from "cluster";
+import { router } from "../router/v1/router";
 
 export class ExpressAdapter { 
     private app: express.Application;
     private readonly port: number;
     private serverService: ServerService;
+    private router: express.Router;
 
     constructor(port: number){
         this.app = express();
         this.port = port;
+        this.router = router;
         this.serverService = new ServerService();
         this.setupMiddleware();
+        this.setupRouterV1();
     }
 
     private setupMiddleware(): void | ServerErrors {
@@ -28,6 +31,18 @@ export class ExpressAdapter {
             if(error instanceof ServerErrors){ 
                 console.error(new ServerErrors("MiddlewareSetupHasFailed", "ServerErros", "InternalServerError"));
                 return new ServerErrors("MiddlewareSetupHasFailed", "ServerErros", "InternalServerError");
+            }
+            return error;
+        }
+    }
+
+    private setupRouterV1(): void | ServerErrors {
+        try {
+            this.app.use("/v1", this.router);
+        } catch (error) {
+            if(error instanceof ServerErrors){ 
+                console.error(new ServerErrors("RouterV1SetupHasFailed", "ServerErros", "InternalServerError"));
+                return new ServerErrors("RouterV1SetupHasFailed", "ServerErros", "InternalServerError");
             }
             return error;
         }
