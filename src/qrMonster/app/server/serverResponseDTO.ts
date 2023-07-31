@@ -8,27 +8,9 @@ type ServerResponseType<T> = {
   } & ResponseDTO<T>;
   
 
-export interface ServerResponseDTO extends ServerResponseType<Server | ServerErrors | Server[]> {
-    statusCode: number;
-}
+export interface ServerResponseDTO extends ServerResponseType<Server | ServerErrors | Server[]> {}
 
 
 declare module "express-serve-static-core" { 
     interface Response extends ResponseDTO<Server | ServerErrors | Server[]> {}
 }
-
-
-// export interface ServerResponseDTO extends Response {
-//     data: Server | ServerErrors;
-//   }
-
-  
-// export type ServerResponseDTO = ResponseDTO<Server | ServerErrors> & ServerResponse;
-
-// export type ServerResponseDTO = Response & ResponseDTO<Server[] | ServerErrors>;
-
-// declare module "express-serve-static-core" {
-//   interface Response extends ServerResponseDTO {}
-// }
-
-// export default ServerResponseDTO;

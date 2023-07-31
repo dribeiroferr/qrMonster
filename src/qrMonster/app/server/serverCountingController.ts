@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { ServerResponseDTO } from "./serverResponseDTO";
 import { ServerErrors } from "../../domain/server/errors/errors";
 import { ServerService } from "./serverService";
-import { Server } from "../../domain/server/entities/entities";
 
 export class ServerCountingController { 
     public async getAllServers(req: Request, res: Response): Promise< ServerResponseDTO > { 
