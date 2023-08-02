@@ -1,5 +1,5 @@
-import { Server } from "../../../../qrMonster/infra/server/server";
-import { EnvironmentalGlobalEnvironments } from "../../../../utils/config/config";
+// import { Server } from "../../../../qrMonster/infra/server/server";
+// import { EnvironmentalGlobalEnvironments } from "../../../../utils/config/config";
 
 
 it('this is a default test, only to stop allarming while running other tests', () => { 

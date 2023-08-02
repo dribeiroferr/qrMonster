@@ -1,5 +1,6 @@
 import { QrCodeGeneratorDatabaseErrors } from "../errors/errors";
 import { IQrCodeGeneratorDatabaseEntity } from "../dtos/interfaces";
+import { v4 as uuid } from "uuid";
 
 /**
  * 
@@ -14,17 +15,20 @@ import { IQrCodeGeneratorDatabaseEntity } from "../dtos/interfaces";
 
 export class QrCodeGeneratorDatabaseEntity{
 
+    private readonly id: string;
     public input_text: string; 
     public negative_input: string;
     public image_s3_object: string;
 
 
     constructor({
+        id, 
         input_text,
         negative_input,
         image_s3_object
     }: IQrCodeGeneratorDatabaseEntity
         ){
+        this.id = uuid();
         this.input_text = input_text;
         this.negative_input = negative_input;
         this.image_s3_object = image_s3_object;
@@ -32,7 +36,6 @@ export class QrCodeGeneratorDatabaseEntity{
     
     public isValid(): boolean { 
         try {
-
             this.input_text ??(() => { throw new QrCodeGeneratorDatabaseErrors("MISSING_INPUT_TEXT_ATTRIBUTE", "QRCODE_MISSING_ATTRIBUTES", "BAD_REQUEST")});
             this.negative_input ?? (() => { throw new QrCodeGeneratorDatabaseErrors("MISSING_NEGATIVE_INPUT_TEXT_ATTRIBUTE", "QRCODE_MISSING_ATTRIBUTES", "BAD_REQUEST")});
             this.image_s3_object ?? (() => { throw new QrCodeGeneratorDatabaseErrors("MISSING_QRCODE_IMAGE_ATTRIBUTE", "QRCODE_MISSING_ATTRIBUTES", "BAD_REQUEST")});
