@@ -1,0 +1,31 @@
+export interface QrCodeGeneratorRequestModelDTO {
+    key: string | null;
+    controlnet_model: string;
+    controlnet_type: string;
+    model_id: string;
+    auto_hint: string;
+    guess_mode: string;
+    prompt: string;
+    negative_prompt: string | null;
+    init_image: string | null;
+    mask_image: string | null;
+    width: string;
+    height: string;
+    samples: string;
+    scheduler: string;
+    num_inference_steps: string;
+    safety_checker: string;
+    enhance_prompt: string;
+    guidance_scale: number;
+    strength: number;
+    lora_model: string;
+    clip_skip: string;
+    tomesd: string;
+    use_karras_sigmas: string;
+    vae: string | null;
+    lora_strength: string | null;
+    embeddings_model: string | null;
+    seed: string | null;
+    webhook: string | null;
+    track_id: string | null;
+}
