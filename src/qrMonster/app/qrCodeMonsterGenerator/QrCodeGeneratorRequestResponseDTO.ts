@@ -8,7 +8,7 @@ type QrCodeGeneratorRequestModelResponseType<T> = {
   } & ResponseDTO<T>;
   
 
-export interface QrCodeGeneratorModelREsponseDTO extends QrCodeGeneratorRequestModelResponseType<QrCodeGeneratorRequestErrors | QrCodeGeneratorRequestModelEntity | QrCodeGeneratorRequestModelEntity[]> {}
+export interface QrCodeGeneratorModelResponseDTO extends QrCodeGeneratorRequestModelResponseType<QrCodeGeneratorRequestErrors | QrCodeGeneratorRequestModelEntity | QrCodeGeneratorRequestModelEntity[]> {}
 
 
 declare module "express-serve-static-core" { 
