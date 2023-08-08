@@ -47,7 +47,7 @@ const qrCodeGeneratorRequestErrorsNames = {
   } as const;
   
   const qrCodeGeneratorRequestErrorsMessages = { 
-      ServerErros : qrCodeGeneratorRequestErrorsNames, 
+      RequestErrors : qrCodeGeneratorRequestErrorsNames, 
       ConditionAlreadySatisfied : 'ALREADY SATISFIED', 
       NotFound : 'NOT FOUND'
   } as const;

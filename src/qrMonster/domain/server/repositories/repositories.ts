@@ -3,7 +3,7 @@ import { Server } from "../entities/entities";
 /**
  * 
  * @namespace ServerRepository
- * @description this is the Server Custom Metrics Repository that will deal with data storage.
+ * @description this is the Server Custom Repository that will deal with data storage.
  * 
  */
 
