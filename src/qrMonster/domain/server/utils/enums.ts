@@ -34,6 +34,9 @@ const serverErrorsNames = {
   // Router Errors:
   RouterV1SetupHasFailed: 'Router V1 setup has failed to initialized',
 
+  // Repository Errors: 
+  ErrorWhileTryingToSave: 'It was not possible to save the desired repository',
+  ErrorWhileTryingToFind: 'It was not possible to find the desired object'
 
 } as const;
 

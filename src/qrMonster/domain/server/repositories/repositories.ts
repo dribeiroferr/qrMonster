@@ -1,14 +1,14 @@
-import { MetricsEntity } from "../entities/entities";
+import { Server } from "../entities/entities";
 
 /**
  * 
- * @namespace MetricsRepository
- * @description this is the Grafana Custom Metrics Repository that will deal with data storage.
+ * @namespace ServerRepository
+ * @description this is the Server Custom Metrics Repository that will deal with data storage.
  * 
  */
 
-export interface MetricsRepository { 
-    findall(): Promise<MetricsEntity[] | MetricsEntity | undefined>;
-    findById(id: string): Promise<MetricsEntity[] | MetricsEntity | undefined>;
-    save(metricsEntity: MetricsEntity): Promise<MetricsEntity[] | void>;
+export interface ServerRepository { 
+    findall(): Promise<Server[] | Server | undefined>;
+    findById(id: string): Promise<Server[] | Server | undefined>;
+    save(server: Server): Promise<Server[] | void>;
 }
