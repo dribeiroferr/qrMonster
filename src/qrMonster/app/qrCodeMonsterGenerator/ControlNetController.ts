@@ -2,17 +2,20 @@ import { QrCodeGeneratorRequestErrors } from "../../domain/qrCodeMosterGenerator
 import { QrCodeGeneratorModelResponseDTO } from "./QrCodeGeneratorRequestResponseDTO";
 import { Request, Response, NextFunction } from "express";
 import { QrCodeGeneratorService } from "./QrCodeMonsterGenerator";
+import { QrCodeGeneratorRequestModelDTO } from "../../domain/qrCodeMosterGenerator/dtos/interfaces";
+import { QrCodeGeneratorRequestModelEntity } from "../../domain/qrCodeMosterGenerator/entities/entities";
+// import { ControlNetResponseDTO } from "./controlNetResponseDTO";
+import { ControlNetDTO } from "../../domain/controlNetResponseEntity/dtos/interface";
+import { AxiosResponse } from "axios";
 
-export class ControlNetController{ 
-    public async execute(req: Request, res: Response, next: NextFunction): Promise<QrCodeGeneratorModelResponseDTO | any>{
+export class ControlNetController{    
+    public async execute (req: Request, res: Response): Promise<Response<AxiosResponse<ControlNetDTO>>>{
         try {
-            const result = await new QrCodeGeneratorService().sendRequest(req.body);
-            return res.json(result); 
+            const requestData: QrCodeGeneratorRequestModelDTO = req.body;
+            const response = await new QrCodeGeneratorService().sendRequest(requestData)
+            
+            return res.json(response);
         } catch (error) {
-            if(error instanceof QrCodeGeneratorRequestErrors){
-                console.error(new QrCodeGeneratorRequestErrors('InternalServerError', 'RequestErrors', 'BadRequest'))
-                return res.json(error);
-            }
             return res.json(error);
         }
     }

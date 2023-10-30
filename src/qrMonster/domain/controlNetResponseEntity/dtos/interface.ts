@@ -1,0 +1,43 @@
+export interface ControlNetDTO { 
+    status: string;
+    generationTime: number;
+    id: number;
+    output: string[];
+    meta: {
+      prompt: string;
+      model_id: string;
+      controlnet_model: string;
+      controlnet_type: string;
+      negative_prompt: string;
+      scheduler: string;
+      safety_checker: string;
+      auto_hint: string;
+      guess_mode: string;
+      strength: string;
+      W: number;
+      H: number;
+      guidance_scale: number;
+      controlnet_conditioning_scale: number;
+      seed: number;
+      multi_lingual: string;
+      use_karras_sigmas: string;
+      algorithm_type: string;
+      safety_checker_type: string;
+      tomesd: string;
+      init_image: string;
+      mask_image: string | null;
+      control_image: string | null;
+      vae: string | null;
+      steps: number;
+      full_url: string;
+      upscale: string;
+      n_samples: number;
+      embeddings: string | null;
+      lora: string;
+      lora_strength: number;
+      temp: string;
+      base64: string;
+      clip_skip: number;
+      file_prefix: string;
+    };
+}

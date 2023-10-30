@@ -38,6 +38,8 @@ export class ExpressAdapter {
 
     private setupRouterV1(): void | ServerErrors {
         try {
+            this.app.use(express.json());
+            this.app.use(express.urlencoded({ extended: true }));
             this.app.use("/v1", this.router);
         } catch (error) {
             if(error instanceof ServerErrors){ 
